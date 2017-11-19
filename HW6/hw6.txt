@@ -1,0 +1,94 @@
+﻿Devin Liu
+
+HW #6
+
+1.
+	a. {x/A, y/B, z/B}
+	b. No valid unifier
+	c. {x/B, y/A}
+	d. {x/John, y/John}
+	e. No valid unifier
+
+2. 
+	a.  ^ = AND
+        v = OR
+        ~ = NOT
+
+        ∀x (Food(x) → Likes(John, x))
+        Food(Apples)
+        Food(Chicken)
+        ∀x ∃y (Eats(y,x) ^ ~Kill(x,y) → Food(x))
+        ∃x ∀y (Kill(x,y) → ~Alive(y))
+        Eats(Bill, Peanuts) ^ Alive(Bill)
+        ∀x (Eats(Bill, x) → Eats(Sue, x))
+   
+     b. 1. ~Food(x) v Likes(John, x)
+        2. Food(Apples)
+        3. Food(Chicken)
+        4. ~Eats(g(x),x) v Kill(x,g(x)) v Food(x)
+        5. ~Kill(g(y),y) v ~Alive(y)
+        6. Eats(Bill, Peanuts)
+        7. Alive(Bill)
+        8. ~Eats(Bill, x) v Eats(Sue, x)
+
+
+   c.   9. Kill(Peanuts, Bill) v Food(Peanuts)         Resolve 4 and 6, with unifier 
+                                                        {x/Peanuts, y/Bill}
+        10. ~Kill(Peanuts, Bill)                                Resolve 5 and 7
+        11. Food(Peanuts)                                Resolve 9 and 10
+        12. Likes(John, Peanuts)                        Resolve 1 and 11
+
+
+   d.   13. Eats(Sue, Peanuts)                        Resolve 6 and 8 with unifier
+                                                        {x/Peanuts}
+		Therefore, Sue eats peanuts.
+
+
+   e.   First order:
+                ∀x ∃y (~Eats(y,x) → Die(y))
+                ∀y (Die(y) → ~Alive(y))
+                Alive(Bill)
+
+
+        CNF:
+                14. Eats(y,x) v Die(y)
+                15. ~Die(y) v ~Alive(y)
+                16. Alive(Bill)
+
+
+        Resolution:
+                17. ~Die(Bill)                Resolve 15 and 16 with unifier {y/Bill}
+                18. Eats(Bill, x)        Resolve 14 and 17 
+                19. Eats(Sue, x)        Resolve 8 and 18
+
+
+                Since the unifier has no value for x, we cannot conclude anything on 
+                what Sue eats. 
+        
+3.      a) Is the instance satisfiable?  
+                The instance is not satisfiable with only 3 colors.
+
+
+        b) Do the conversion again, this time, with 4 colors. Use RSat to solve this new SAT 
+            instance. Is the instance satisfiable?  
+                The instance is satisfiable with 4 colors. 
+
+
+        c) What do the answers of these two SAT instances tell you about the graph coloring 
+            problem of the above graph? Can you give a solution (a coloring) to the graph coloring 
+            problem of the above graph based on the results of RSat? 
+                The minimum number of colors needed to satisfy the graph is 4 colors.
+                
+                Sample solution: 
+                                Colors: R,G,B,Y
+                                1 → R
+                                2 → G
+                                3 → R
+                                4 → B
+                                5 → G
+                                6 → Y
+                                7 → B
+        d) Now, use a similar approach to solve the graph coloring of the graph described in 
+            graph2.txt. What is the minimum number of colors required to properly color this 
+             graph? 
+                The minimum number of colors is 8.
