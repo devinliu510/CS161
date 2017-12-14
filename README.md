@@ -1,6 +1,7 @@
 Contains my work for CS161 at UCLA for Professor Darwiche. 
 
 Scores:
+	
 	HW1 -> 78	TA didn't like my comments and indentation style
 	
 	HW2 -> 100
